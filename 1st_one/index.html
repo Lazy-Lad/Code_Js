@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Learning JavaScript</title>
+</head>
+<body>
+    <h1 id="change_title">Calculator</h1>
+    <div class = "main_container">
+        <div id = "screen">
+            <p id="show_selected_value">Enter number</p>
+        </div>
+        <div class = "NumPad">
+            <table id = "num_pad">
+                <tr>
+                    <td id="num_9" onclick="getValue(9)">9</td>
+                    <td id="num_8" onclick="getValue(8)">8</td>
+                    <td id="num_7" onclick="getValue(7)">7</td>
+                </tr>
+                <tr>
+                    <td id="num_6" onclick="getValue(6)">6</td>
+                    <td id="num_5" onclick="getValue(5)">5</td>
+                    <td id="num_4" onclick="getValue(4)">4</td>
+                </tr>
+                <tr>
+                    <td id="num_3" onclick="getValue(3)">3</td>
+                    <td id="num_2" onclick="getValue(2)">2</td>
+                    <td id="num_1" onclick="getValue(1)">1</td>
+                </tr>
+                <tr>
+                    <td id="num_point" onclick="getValue('.')">.</td>
+                    <td id="num_0" onclick="getValue(0)">0</td>
+                    <td></td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="ControlKeys">
+            <table id="control_key">
+                <tr>
+                    <td onclick="delSingleDigit()">del</td>
+                    <td onclick="allClear()">AC</td>
+                </tr>
+                <tr>
+                    <td onclick="pushOperator('X')">X</td>
+                    <td onclick="pushOperator('/')">/</td>
+                </tr>
+                <tr>
+                    <td onclick="pushOperator('+')">+</td>
+                    <td onclick="pushOperator('-')">-</td>
+                </tr>
+                <tr>
+                    <td onclick="multiplyTen()">10x</td>
+                    <td onclick="equals()">=</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src = "script.js"></script>
+</body>
+</html>
