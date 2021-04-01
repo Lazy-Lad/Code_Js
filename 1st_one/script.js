@@ -1,3 +1,11 @@
+var a = "";
+var b = "";
+var op = '';
+var numLIst= [];
+var operatorList = []
+var isCalculated = false
+var isDarkModeOn = false
+
 document.getElementById("expression").style.display = "none"
 
 function setValue(num){
@@ -8,13 +16,6 @@ function setExpression(){
     document.getElementById("expression").innerHTML = "Exepression is : " + a
 }
 
-var a = "";
-var b = "";
-var op = '';
-var numLIst= [];
-var operatorList = []
-var isCalculated = false
-var isDarkModeOn = false
 function getValue(getNum){ 
     if(!isCalculated){
         b = b + getNum
@@ -22,6 +23,7 @@ function getValue(getNum){
         setValue(a)
     }
 }
+
 function deleteSingleDigit(digit1,digit2){
     a = digit1.slice(0, -1)
     b = digit2.slice(0, -1)
@@ -46,6 +48,7 @@ function allClear(){
     isCalculated = false
     document.getElementById("expression").style.display = "none"
 }
+
 function pushOperator(operator){
 
     if(!isCalculated){
@@ -58,6 +61,7 @@ function pushOperator(operator){
         setValue(a)
     }
 }
+
 function equals(){
     op = a.slice(-1);
     if(op === '-' || op === '+' || op === '*' || op === '/' ){
