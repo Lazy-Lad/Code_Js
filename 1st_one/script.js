@@ -14,6 +14,7 @@ var op = '';
 var numLIst= [];
 var operatorList = []
 var isCalculated = false
+var isDarkModeOn = false
 function getValue(getNum){ 
     if(!isCalculated){
         b = b + getNum
@@ -141,4 +142,32 @@ function operate(a,b,op,j){
     }
 }
 
+function toggleDarkMode(){
+    if(!isDarkModeOn){
+        document.body.style.backgroundColor = "rgb(11,11,11)"
+        document.getElementById("change_title").style.color ="white"
+        document.getElementById("screen").style.backgroundColor ="rgb(11,11,11)"
+        document.getElementById("numberPad").style.backgroundColor ="rgb(11,11,11)"
+        document.getElementById("ControlKey").style.backgroundColor ="rgb(11,11,11)"
+        document.getElementById("expression").style.color ="white"
+        document.getElementById("show_selected_value").style.color ="white"
+        document.getElementById("UI_Theme_button").innerHTML = "Turn off Dark Mode"
+        document.getElementById("UI_Theme_button").style.color = "rgb(11,11,11)"
+        document.getElementById("UI_Theme_button").style.backgroundColor = "white"
+        isDarkModeOn = true
+    }else{
+        document.body.style.backgroundColor = "white"
+        document.getElementById("change_title").style.color ="black"
+        document.getElementById("screen").style.backgroundColor ="white"
+        document.getElementById("numberPad").style.backgroundColor ="white"
+        document.getElementById("ControlKey").style.backgroundColor ="white"
+        document.getElementById("expression").style.color ="gray"
+        document.getElementById("show_selected_value").style.color ="black"
+        document.getElementById("UI_Theme_button").innerHTML = "Turn on Dark Mode"
+        document.getElementById("UI_Theme_button").style.color = "whitesmoke"
+        document.getElementById("UI_Theme_button").style.backgroundColor = "rgb(11,11,11)"
+        isDarkModeOn = false
+    }
+    
+}
 

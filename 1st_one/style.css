@@ -3,8 +3,24 @@ html, body {
   margin: 0; }
 
 h1 {
+  clear: both;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif; }
+
+#UI_Theme_button {
+  margin-bottom: 0;
+  float: right;
+  margin-right: 20px;
+  margin-top: 12px;
+  background-color: #1c1c1c;
+  padding: 10px 20px 8px 20px;
+  color: whitesmoke;
+  border-radius: 12px;
+  outline: none;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  cursor: pointer; }
 
 .main_container {
   background-color: blueviolet;
@@ -12,10 +28,10 @@ h1 {
   height: 600px;
   position: absolute;
   border-radius: 10px;
-  top: 0;
+  top: auto;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: auto;
   margin: auto; }
 
 #screen {
