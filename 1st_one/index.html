@@ -11,7 +11,11 @@
     <h1 id="change_title">Calculator</h1>
     <div class = "main_container">
         <div id = "screen">
-            <p id="show_selected_value">0000000</p>
+            <div id="show_ans">
+                <p id="expression">EXPRESSION IS :</p>
+                <br>
+                <p id="show_selected_value">0000000</p>
+            </div>
         </div>
         <div class = "NumPad">
             <table id = "num_pad">
@@ -53,7 +57,7 @@
                     <td onclick="pushOperator('-')">-</td>
                 </tr>
                 <tr>
-                    <td onclick="multiplyTen()">10x</td>
+                    <td onclick="multiplyTen()"></td>
                     <td onclick="equals()">=</td>
                 </tr>
             </table>

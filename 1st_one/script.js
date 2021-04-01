@@ -1,6 +1,11 @@
+document.getElementById("expression").style.display = "none"
 
 function setValue(num){
     document.getElementById("show_selected_value").innerHTML = num;
+}
+function setExpression(){
+    document.getElementById("expression").style.display = "block"
+    document.getElementById("expression").innerHTML = "Exepression is : " + a
 }
 
 var a = "";
@@ -10,19 +15,24 @@ var numLIst= [];
 var operatorList = []
 var isCalculated = false
 function getValue(getNum){ 
-    b = b + getNum;
-    a = a+getNum;
-    setValue(a);
+    if(!isCalculated){
+        b = b + getNum
+        a = a+getNum
+        setValue(a)
+    }
 }
-function deleteSingleDigit(digit){
-    a = digit.slice(0, -1);
-    setValue(a);
+function deleteSingleDigit(digit1,digit2){
+    a = digit1.slice(0, -1)
+    b = digit2.slice(0, -1)
+    setValue(a)
 }
 
 function delSingleDigit(){
     if(!isCalculated){
-        deleteSingleDigit(a)
-        operatorList.pop()
+        deleteSingleDigit(a,b)
+        if(operatorList.length>1){
+            operatorList.pop()
+        }
     }
 }
 
@@ -32,16 +42,20 @@ function allClear(){
     numLIst = []
     operatorList=[]
     setValue("0000000")
+    isCalculated = false
+    document.getElementById("expression").style.display = "none"
 }
 function pushOperator(operator){
 
-    if(b!= ""){
-        numLIst.push(b)
-        b = ""
+    if(!isCalculated){
+        if(b!= ""){
+            numLIst.push(b)
+            b = ""
+        }
+        operatorList.push(operator);
+        a = a+ operator;
+        setValue(a)
     }
-    operatorList.push(operator);
-    a = a+ operator;
-    setValue(a)
 }
 function equals(){
     op = a.slice(-1);
@@ -55,6 +69,7 @@ function equals(){
         console.log(numLIst)
         console.log(operatorList)
         setValue(calculate())
+        setExpression()
         isCalculated = true
     }
 
@@ -77,9 +92,7 @@ function calculate(){
             let a = parseFloat(numLIst[j])
             let b = parseFloat(numLIst[j+1])
             let op = operatorList[j]
-            numLIst[j] = operate(a,b,op)
-            numLIst.splice(j+1,1)
-            operatorList.splice(j,1)
+            operate(a,b,op,j)
             console.log("*********")
             console.log(operatorList)
             console.log(numLIst)
@@ -91,16 +104,40 @@ function calculate(){
    return numLIst[0]
 }
 
-function operate(a,b,op){
+function operate(a,b,op,j){
     switch (op){
         case '/':
-            return a/b
+            numLIst[j] = a/b
+            numLIst.splice(j+1,1)
+            operatorList.splice(j,1)
+            break
         case '*':
-            return a*b
+            numLIst[j] = a*b
+            numLIst.splice(j+1,1)
+            operatorList.splice(j,1)
+            break
         case '+':
-            return a+b
+            if(operatorList[j-1] === "-")
+            {
+                a= parseFloat(numLIst[0])
+                b = parseFloat(numLIst[numLIst.length-1])
+                numLIst[0] = a + b
+                numLIst.pop()
+                operatorList.pop()
+                break
+            }
+            else{
+                numLIst[j] = a+b
+                numLIst.splice(j+1,1)
+                operatorList.splice(j,1)
+                break
+            }
+            // return a+b
         default:
-            return a-b
+            numLIst[j] = a-b
+            numLIst.splice(j+1,1)
+            operatorList.splice(j,1)
+            break
     }
 }
 
